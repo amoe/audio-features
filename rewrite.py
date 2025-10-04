@@ -51,8 +51,9 @@ for root, dirs, files in os.walk(base_dir):
             with open('out.json', 'w') as f:
                 json.dump(probabilities, f)
         except audioread.exceptions.NoBackendError as e:
-            print("skipping:", absolute_path)
-            pass
+            # print("skipping:", absolute_path)
+            # pass
+            raise e
 
         
 #        print_probabilities(probabilities)
