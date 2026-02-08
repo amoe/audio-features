@@ -25,5 +25,5 @@ x = data.get(key)
 if x is None:
     print("Class not found.")
 else:
-    print_probabilities(x)
+    print_probabilities(x['probabilities'])
     

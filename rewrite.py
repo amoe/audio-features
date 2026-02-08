@@ -6,6 +6,7 @@ import warnings
 import json
 import openpyxl
 import audioread.exceptions
+import uuid
 
 # probably bad but works
 warnings.filterwarnings('ignore')
@@ -48,12 +49,13 @@ for root, dirs, files in os.walk(base_dir):
 
             out_ws.append(row)
 
-            with open('out.json', 'w') as f:
-                json.dump(probabilities, f)
+            my_uuid = uuid.uuid4()
+            
+            with open(f'out-{my_uuid}.json', 'w') as f:
+                json.dump({'file': file_, 'probabilities': probabilities}, f)
         except audioread.exceptions.NoBackendError as e:
-            # print("skipping:", absolute_path)
-            # pass
-            raise e
+            print("skipping:", absolute_path)
+
 
         
 #        print_probabilities(probabilities)

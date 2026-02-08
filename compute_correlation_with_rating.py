@@ -1,7 +1,10 @@
+import pdb
 import pandas as pd
 
 # Load spreadsheet
 df = pd.read_csv("with_rating.csv")
+
+# Note this auto removes any pairs that don't have ratings.
 
 # Compute correlation of each column with rating
 correlations = df.corr(numeric_only=True)["rating"].drop("rating")
